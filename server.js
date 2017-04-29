@@ -57,6 +57,10 @@ function getSearchResult(imageList) {
 }
 
 let app = express();
+app.get('/', (req, res) => {
+    //res.sendFile(__dirname + '/index.html');
+    res.sendFile('index.html', { root: __dirname });
+});
 app.get('/api/imagesearch/:searchStr', (req, res) => {
     createSearchString(req.params.searchStr, req.query.offset);
     inserHistory(req.params.searchStr, req.ip);
